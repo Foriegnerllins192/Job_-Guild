@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seekin Guild</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .sign-in {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        /* Sign-up Page Styles */
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            margin: 50px auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Account button -->
+    <header>
+        <div class="logo">Your Website</div>
+        <div class="dropdown-menu">
+            <button class="sign-in" id="accountButton">Account</button>
+        </div>
+    </header>
+    
+    <!-- Main Content - Home Page -->
+    <div id="mainHomePage" class="main-content">
+        <h1>Welcome to Your Website</h1>
+        <p>This is the main content of your website. Click the Account button to sign up.</p>
+    </div>
+    
+    <!-- Sign Up Form -->
+    <div id="signUpPage" class="container hidden">
+        <h1>Create Account</h1>
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" required>
+        </div>
+        <button id="signUpButton">Create Account</button>
+    </div>
+
+    <!-- Questionnaire Page 1: Industry -->
+    <div id="questionPage1" class="container hidden">
+        <h1>Tell us about yourself</h1>
+        <div class="form-group">
+            <label>What industry are you in?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="industry" value="Agriculture"> Agriculture</label><br>
+                <label><input type="radio" name="industry" value="Technology"> Technology</label><br>
+                <label><input type="radio" name="industry" value="Healthcare"> Healthcare</label><br>
+                <label><input type="radio" name="industry" value="Education"> Education</label><br>
+                <label><input type="radio" name="industry" value="Finance"> Finance</label><br>
+                <label><input type="radio" name="industry" value="Manufacturing"> Manufacturing</label>
+            </div>
+        </div>
+        <button id="nextButton1">Next</button>
+    </div>
+
+    <!-- Questionnaire Page 2: Job -->
+    <div id="questionPage2" class="container hidden">
+        <h1>Your Role</h1>
+        <div class="form-group">
+            <label>What is your job?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="job" value="Manager"> Manager</label><br>
+                <label><input type="radio" name="job" value="Specialist"> Specialist</label><br>
+                <label><input type="radio" name="job" value="Technician"> Technician</label><br>
+                <label><input type="radio" name="job" value="Analyst"> Analyst</label><br>
+                <label><input type="radio" name="job" value="Administrator"> Administrator</label><br>
+                <label><input type="radio" name="job" value="Other"> Other</label>
+            </div>
+        </div>
+        <button id="nextButton2">Next</button>
+    </div>
+
+    <!-- Questionnaire Page 3: Experience -->
+    <div id="questionPage3" class="container hidden">
+        <h1>Your Experience</h1>
+        <div class="form-group">
+            <label>Do you have any experience?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="experience" value="None"> None</label><br>
+                <label><input type="radio" name="experience" value="1-2 years"> 1-2 years</label><br>
+                <label><input type="radio" name="experience" value="3-5 years"> 3-5 years</label><br>
+                <label><input type="radio" name="experience" value="6-10 years"> 6-10 years</label><br>
+                <label><input type="radio" name="experience" value="More than 10 years"> More than 10 years</label>
+            </div>
+        </div>
+        <button id="nextButton3">Next</button>
+    </div>
+
+    <!-- Questionnaire Page 4: Location -->
+    <div id="questionPage4" class="container hidden">
+        <h1>Your Location</h1>
+        <div class="form-group">
+            <label>Where are you located in Ghana?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="location" value="Accra"> Accra</label><br>
+                <label><input type="radio" name="location" value="Kumasi"> Kumasi</label><br>
+                <label><input type="radio" name="location" value="Tamale"> Tamale</label><br>
+                <label><input type="radio" name="location" value="Takoradi"> Takoradi</label><br>
+                <label><input type="radio" name="location" value="Cape Coast"> Cape Coast</label><br>
+                <label><input type="radio" name="location" value="Other"> Other</label>
+            </div>
+        </div>
+        <button id="finalSignUpButton">Complete Sign Up</button>
+    </div>
+
+    <!-- Final Home Page (after sign up) -->
+    <div id="finalHomePage" class="container hidden">
+        <h1>Welcome to Your Account</h1>
+        <p>You have successfully signed up and completed your profile.</p>
+        <p>Thank you for joining us!</p>
+        <button id="returnToHomeButton">Return to Home Page</button>
+    </div>
+
+    <script>
+        // Get elements
+        const mainHomePage = document.getElementById('mainHomePage');
+        const signUpPage = document.getElementById('signUpPage');
+        const questionPage1 = document.getElementById('questionPage1');
+        const questionPage2 = document.getElementById('questionPage2');
+        const questionPage3 = document.getElementById('questionPage3');
+        const questionPage4 = document.getElementById('questionPage4');
+        const finalHomePage = document.getElementById('finalHomePage');
+        
+        // Buttons
+        const accountButton = document.getElementById('accountButton');
+        const signUpButton = document.getElementById('signUpButton');
+        const nextButton1 = document.getElementById('nextButton1');
+        const nextButton2 = document.getElementById('nextButton2');
+        const nextButton3 = document.getElementById('nextButton3');
+        const finalSignUpButton = document.getElementById('finalSignUpButton');
+        const returnToHomeButton = document.getElementById('returnToHomeButton');
+
+        // Connect Account button to Sign Up page
+        accountButton.addEventListener('click', () => {
+            mainHomePage.classList.add('hidden');
+            signUpPage.classList.remove('hidden');
+        });
+
+        // Event listeners for the flow
+        signUpButton.addEventListener('click', () => {
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (fullname && email && username && password && confirmPassword) {
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                signUpPage.classList.add('hidden');
+                questionPage1.classList.remove('hidden');
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        nextButton1.addEventListener('click', () => {
+            if (document.querySelector('input[name="industry"]:checked')) {
+                questionPage1.classList.add('hidden');
+                questionPage2.classList.remove('hidden');
+            } else {
+                alert('Please select an industry');
+            }
+        });
+
+        nextButton2.addEventListener('click', () => {
+            if (document.querySelector('input[name="job"]:checked')) {
+                questionPage2.classList.add('hidden');
+                questionPage3.classList.remove('hidden');
+            } else {
+                alert('Please select a job');
+            }
+        });
+
+        nextButton3.addEventListener('click', () => {
+            if (document.querySelector('input[name="experience"]:checked')) {
+                questionPage3.classList.add('hidden');
+                questionPage4.classList.remove('hidden');
+            } else {
+                alert('Please select your experience level');
+            }
+        });
+
+        finalSignUpButton.addEventListener('click', () => {
+            if (document.querySelector('input[name="location"]:checked')) {
+                questionPage4.classList.add('hidden');
+                finalHomePage.classList.remove('hidden');
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.textContent = 'You have successfully signed up!';
+                document.body.appendChild(successMessage);
+                
+                // Remove success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 3000);
+            } else {
+                alert('Please select your location');
+            }
+        });
+        
+        // Return to main home page button
+        returnToHomeButton.addEventListener('click', () => {
+            finalHomePage.classList.add('hidden');
+            mainHomePage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeking Guild</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <section class="header">
+        <div class="logo">
+            <a href="index.html"><h1>JOB SEEKING GUILD</h1></a>
+        </div>
+        
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i> <!-- Hamburger Icon -->
+        </div>
+
+        <div class="navbar" id="navbar">
+            <ul>
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="task.html">Quest</a></li>
+                <li><a href="patnerships.html">Partnerships</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="dropdown-menu">
+                <button class="sign-in"> Account</button>
+            </div>
+            <div class="dropdown-menu">
+                <button class="post">Post a Job</button>
+            </div>
+        </div>
+    </section>
+    <section class="contact-us">
+        <div class="contact-form">
+            <p class="L">Leave a Message</p>
+            <h2>We love to hear from you</h2>
+        <div class="form">
+        <form>
+        <div class="form-data">
+        <input type="text" name="uname" placeholder="Your Name">
+        </div>
+        <div class="form-data">
+        <input type="email" name="email" placeholder="E-mail">
+        </div>
+        <div class="form-data">
+        <input type="text" name="Subject" placeholder="Subject">
+        </div>
+        <div class="form-data">
+        <textarea name="uname" placeholder="Your Message" cols="40" rows="10"></textarea>
+        </div>
+        <input class="submit" type="submit" name="send" value="Send Message">
+        </form>
+        </div>
+        </div>
+    </section> 
+
+    
+    <script>
+        // Toggle Mobile Menu
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+        document.getElementById("navbar").classList.toggle("active");
+    });
+    
+    // Sticky Navbar Effect on Scroll
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector(".header");
+        if (window.scrollY > 50) { 
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+    
+       </script>
+</body>
+</html>
